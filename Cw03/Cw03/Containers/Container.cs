@@ -23,12 +23,12 @@ public abstract class Container : IContainer
         MaxCargoWeight = maxCargoWeight;
     }
 
-    public void Unload()
+    public virtual void Unload()
     {
         CargoWeight = 0;
     }
 
-    public void Load(double cargoWeight)
+    public virtual void Load(double cargoWeight)
     {
         if (CargoWeight + cargoWeight > MaxCargoWeight)
         {

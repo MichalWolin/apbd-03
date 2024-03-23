@@ -1,4 +1,4 @@
-﻿namespace Cw03.Containers;
+﻿namespace Cw03.Enums;
 
 public enum PossibleProducts
 {

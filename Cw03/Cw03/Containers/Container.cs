@@ -31,10 +31,14 @@ public abstract class Container : IContainer
     public virtual void Load(double cargoWeight)
     {
         if (CargoWeight + cargoWeight > MaxCargoWeight)
-        {
             throw new OverfillException();
-        }
 
         CargoWeight += cargoWeight;
+    }
+
+    public override string ToString()
+    {
+        return "Container: " + SerialNumber + ", Weight (kg): " + Weight + ", Height (cm): " + Height + ", Depth (cm): "
+               + Depth + ", MaxCargoWeight (kg): " + MaxCargoWeight + ", CargoWeight (kg): " + CargoWeight;
     }
 }

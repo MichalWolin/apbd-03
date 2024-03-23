@@ -1,13 +1,19 @@
-﻿namespace Cw03.Containers;
+﻿using Cw03.Enums;
+
+namespace Cw03.Containers;
 
 public class CoolingContainer : Container
 {
-    public CoolingContainer(double height, double weight, double depth, double maxCargoWeight)
+    public PossibleProducts Product { get; set; }
+    public double Temperature { get; set; }
+
+    public CoolingContainer(double height, double weight, double depth, double maxCargoWeight, PossibleProducts product)
         : base(height, weight, depth, "C", maxCargoWeight)
     {
+        Product = product;
     }
 
-    public double? GetTemperature(PossibleProducts product)
+    public double? GetProductTemperature(PossibleProducts product)
     {
         switch (product)
         {
@@ -24,5 +30,11 @@ public class CoolingContainer : Container
         }
 
         return null;
+    }
+
+    public void CheckTemperature()
+    {
+        if (Temperature < GetProductTemperature(Product))
+            Console.WriteLine("Temperature is too low for " + Product);
     }
 }

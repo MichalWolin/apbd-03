@@ -7,21 +7,34 @@ public abstract class Container : IContainer
 {
     public double CargoWeight { get; set; }
 
-    public double CargoHeight { get; set; }
+    public double Height { get; set; }
+    public double Weight { get; set; }
+    public double Depth { get; set; }
+    public string SerialNumber { get; set; }
+    public double MaxCargoWeight { get; set; }
+    private static int _serialNumberId = 1;
 
-    protected Container(double cargoWeight, double cargoHeight)
+    protected Container(double height, double weight, double depth, string containerType, double maxCargoWeight)
     {
-        CargoWeight = cargoWeight;
-        CargoHeight = cargoHeight;
+        Height = height;
+        Weight = weight;
+        Depth = depth;
+        SerialNumber = "KON-" + containerType + "-" + _serialNumberId++;
+        MaxCargoWeight = maxCargoWeight;
     }
 
     public void Unload()
     {
-        throw new NotImplementedException();
+        CargoWeight = 0;
     }
 
     public void Load(double cargoWeight)
     {
-        throw new OverfillException();
+        if (CargoWeight + cargoWeight > MaxCargoWeight)
+        {
+            throw new OverfillException();
+        }
+
+        CargoWeight += cargoWeight;
     }
 }

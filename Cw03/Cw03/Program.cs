@@ -13,6 +13,7 @@ namespace Cw03
 
             Console.WriteLine(liquidContainer.SerialNumber);
             Console.WriteLine(liquidContainer2.SerialNumber);
+            liquidContainer.Load(91, false );
         }
     }
 }
